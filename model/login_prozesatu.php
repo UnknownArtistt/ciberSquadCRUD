@@ -53,22 +53,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Admin bada panelera eraman bestela ikasleen index-era
             if ($administraria == 0) {
                 // Admin da
-                header('Location: ../crud/administrazioa.php');
+                header('Location: ../administrazioa.php');
                 exit();
             } else {
                 // Ikaslea da
-                header('Location: ../crud/index_ikasleak.php');
+                header('Location: ../index_ikasleak.php');
                 exit();
             }
             
         } else {
             // Pasahitz okerra
-            header('Location: ../crud/saioa_hasi.php?error=incorrect_password');
+            header('Location: ../saioa_hasi.php?error=incorrect_password');
             exit();
         }
     } else {
         // Ez da erabiltzailea aurkitu
-        header('Location: ../crud/saioa_hasi.php?error=user_not_found');
+        header('Location: ../saioa_hasi.php?error=user_not_found');
         exit();
     }
 
