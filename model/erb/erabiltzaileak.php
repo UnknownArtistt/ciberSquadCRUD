@@ -31,7 +31,7 @@ $result = $conn->query($sql);
     
     <nav class="navbar">
         <ul>
-            <li><a href="../../crud/administrazioa.php">Hasiera</a></li> <!-- Hasierara bueltatu -->
+            <li><a href="../../administrazioa.php">Hasiera</a></li> <!-- Hasierara bueltatu -->
             <li><a href="../iks/ikasleak.php">Ikasleak</a></li> <!-- Ikasleen panelera joan -->
             <li><a href="../erb/erabiltzaileak.php">Erabiltzaileak</a></li> <!-- Erabiltzaileen panelera joan -->
             <li><a href="../ere/erregistro_eskaerak.php">Erregistro Eskaerak</a></li> <!-- Erregistro eskaeretara joan -->
