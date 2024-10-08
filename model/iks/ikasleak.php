@@ -92,7 +92,7 @@ $result = $conn->query($sql);
 
         <!-- Kurtso berria sortu -->
         <div class="new-student-form" style="display: none;">
-            <h3>Kurtso Berria Sortu</h3>
+            <h3>Ikasle Berria Sortu</h3>
             <form method="POST" action="create_ikaslea.php">
 
                 <label for="izena">Izena:</label>
