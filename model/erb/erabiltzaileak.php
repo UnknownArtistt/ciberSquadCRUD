@@ -79,10 +79,10 @@ $result = $conn->query($sql);
                     echo "</form>";
 
                     // Eguneratzeko botoia
-                    echo "<form action='update_ikaslea.php' method='get' style='display:inline-block;'>";
-                    echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-                    echo "<button type='submit' class='update-btn'>Eguneratu</button>";
-                    echo "</form>";
+                    //echo "<form action='update_ikaslea.php' method='get' style='display:inline-block;'>";
+                    //echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
+                    //echo "<button type='submit' class='update-btn'>Eguneratu</button>";
+                    //echo "</form>";
 
                     echo "</td>";
                     echo "</tr>";
