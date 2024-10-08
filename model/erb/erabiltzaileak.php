@@ -100,7 +100,7 @@ $result = $conn->query($sql);
 
         <!-- Kurtso berri sortzeko datuak jaso -->
         <div id="new-user-form" style="display: none;">
-            <h3>Kurtso Berria Sortu</h3>
+            <h3>Erabiltzailea Berria Sortu</h3>
             <form method="POST" action="create_ikaslea.php">
 
                 <label for="erb_izena">Erabiltzaile Izena:</label>
