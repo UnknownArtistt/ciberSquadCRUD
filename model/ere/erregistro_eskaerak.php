@@ -22,7 +22,7 @@ $result = $conn->query($sql);
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="../../crud/administrazioa.php">Hasiera</a></li> <!-- Hasierara bueltatu -->
+            <li><a href="../../administrazioa.php">Hasiera</a></li> <!-- Hasierara bueltatu -->
             <li><a href="../iks/ikasleak.php">Ikasleak</a></li> <!-- Ikasleen panelera -->
             <li><a href="../erb/erabiltzaileak.php">Erabiltzaileak</a></li> <!-- Erabiltzaileen panelera -->
             <li><a href="erregistro_eskaerak.php">Erregistro Eskaerak</a></li> <!-- Erregistro eskaeretara -->
