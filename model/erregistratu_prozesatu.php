@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prestaketa ondo egin den zihurtatu
     if ($stmt === false) {
-        header('Location: ../crud/erregistratu.php?status=error&message=' . urlencode($conn->error));
+        header('Location: ../erregistratu.php?status=error&message=' . urlencode($conn->error));
         exit();
     }
 
@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Exekutatu
     if ($stmt->execute()) {
-        header('Location: ../crud/erregistratu.php?status=success&message=' . urlencode("Erregistroa ondo burutu da! Administratzaileak balioztatu beharko du."));
+        header('Location: ../erregistratu.php?status=success&message=' . urlencode("Erregistroa ondo burutu da! Administratzaileak balioztatu beharko du."));
         exit();
     } else {
-        header('Location: ../crud/erregistratu.php?status=error&message=' . urlencode($stmt->error));
+        header('Location: ../erregistratu.php?status=error&message=' . urlencode($stmt->error));
         exit();
     }
 
