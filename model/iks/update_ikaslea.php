@@ -2,7 +2,7 @@
 // Sesioa hasi
 session_start();
 
-include '../../crud/konexioa.php'; // Konexioa gehitu
+include '../../konexioa.php'; // Konexioa gehitu
 
 // Erroreen bisibilizazioa gaitu
 ini_set('display_errors', 1);
