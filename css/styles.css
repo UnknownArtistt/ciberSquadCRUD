@@ -1,0 +1,99 @@
+/* Edukia zentratu */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Nabigazio menua*/
+.navbar {
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar ul li {
+    display: inline;
+    padding: 14px 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Containerra zentratu */
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 55%;
+}
+
+.delete-btn {
+    background-color: #3ce789; /* Eliminar: Red */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* Logoaren tamaina ajustatu */
+.logo {
+    margin-top: 25px;
+    width: 20%;
+}
+
+/* Taularen estiloak */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    margin-bottom: 25px;
+
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+/* Pantaila txikiagoetara moldatzeko*/
+@media (max-width: 600px) {
+    .logo {
+        width: 40%;
+    }
+
+    table {
+        width: 100%;
+    }
+}

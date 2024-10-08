@@ -1,0 +1,191 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Nabegazio menua */
+.navbar {
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    display: inline;
+    padding: 14px 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Content styling */
+.content {
+    width: 58%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.content h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the action buttons in the table */
+table td form {
+    display: inline-block;
+    margin-right: 10px; /* Small space between the buttons */
+}
+
+.delete-btn, .update-btn {
+    background-color: #e74c3c; 
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.update-btn {
+    background-color: #3498db; 
+}
+
+.delete-btn:hover, .update-btn:hover {
+    opacity: 0.8;
+}
+
+/* Success message styling */
+p {
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Create course button styling */
+.create-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.create-btn:hover {
+    background-color: #27ae60;
+}
+
+/* New course form styling */
+#new-course-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 50%;
+    margin: 20px auto;
+}
+
+#new-course-form h3 {
+    text-align: center;
+}
+
+#new-course-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#new-course-form input {
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#new-course-form button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#new-course-form button:hover {
+    background-color: #27ae60;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    .navbar ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .create-btn, .delete-btn, .update-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #new-course-form {
+        width: 90%;
+    }
+}

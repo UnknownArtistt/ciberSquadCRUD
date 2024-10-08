@@ -1,0 +1,75 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, p {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.admin-navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.admin-navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.admin-navbar ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.admin-navbar ul li a {
+    color: white;
+    padding: 14px 20px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.admin-navbar ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Admin container */
+.admin-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+/* Button Styles (if needed) */
+button {
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #3498db;
+}
