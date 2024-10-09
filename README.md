@@ -1,5 +1,7 @@
 # ciberSquadCRUD
 
+## 1. Datu Basea
+
 Erronka honetarako CRUD motatako web orrialde bat sortu dugu. Orri horren bitartez datuak atzitu, bistaratu eta prozesatu ahalko dugu. Orriak informazio sistemaren muina da erabiltzaileak zuzenean interakzioak eramaten dutelako aurrera. Interakzio horren emaitz moduan prozesatutako datuak aurkituko lirateke. Datu horiek zerbitzari batean dugun datu basean biltzen ditugu.
 
 CRUD bat egiterakoan, garrantzitsua da datu-basearen barruan erabiliko diren taulak eta horien arteko erlazioak zehaztea.
@@ -11,3 +13,53 @@ Azkenik, beste taula bat dugu, eskatutako erregistroen eskaerak gordetzeko. Taul
 Honak hau izango litzateke datu basearen diagrama. Bertan eremuen izenak eta taulen arteko erlazioak ikusi ahal dira:
 
 <img src="datuBaseDiagrama.png">
+
+## 2. CRUD web orria (nondik norakoak)
+
+Behin hori zehaztuta, CRUD orrialdea azaltzera pasako gara. Kasu zehatz honetan web orria HTML, CSS eta PHP lengoaiekin garatu dugu. HTML eta CSS markatze lengoaiak frontend-aren garapenean erabili ditugu non erabiltzailearentzat ahalik eta interfaze ulergarri eta garbiena lortzen saiatu garen. PHP-ren bitartez datuen prozesamendua eta datu basera atzipena eraman dugu aurrera.
+
+Nahiz eta ez dagoen guztiz MVC (Model-View-Controller) eredua zorrotz jarraitzen duen egitura batean, webgune hau MVCren printzipio batzuk betetzen ditu, HTML, CSS, eta PHP erabiliz:
+
+- Models (Ereduak): MVC ereduan, ereduak datuen kudeaketarekin eta datu-basearekin komunikazioarekin lotuta daude. Kasu honetan, Ikaslea, Erabiltzailea eta Kurtsoa bezalako ereduak sortu dira, objektu-orientazioa erabiliz. Eredu hauek datuak eta datu-basearekiko interakzioak bideratzen dituzte, adibidez, erabiltzaileen datuak kargatu eta gordetzeko edo kurtsoen informazioa eskuratzeko. Eredu hauei esker, datu-kudeaketa errazagoa eta argiagoa bihurtzen da.
+  
+- Views (Bistak): Webguneko HTML dokumentuak eta CSS estilo-fitxategiak erabiltzaileari erakusten dioten informazioa eta interfazea osatzen dute. HTML fitxategiek datuak bistaratu eta erabiltzaile-interakzioa ahalbidetzen dute, esaterako, kurtsoen zerrenda edo saioa hasteko formularioa. Erabiltzaileari erakusteko informazioa jaso ondoren, bistak interfazea era erakargarri batean aurkezten dute.
+  
+- Controllers (Kontroladoreak): PHP fitxategiek erabiltzaileen ekintzak prozesatzen dituzte, esaterako, saioa hasteko eskaerak, datu-basearekin elkarreragiteko kontsultak, eta matrikulazio-prozesuak. Fitxategi hauek erabiltzailearen eskaerak jaso eta horien arabera erantzuten dute, normalean datuak prestatuz eta bistetara igorriz. Saioa hastea edo datuak eguneratzea bezalako ekintzak kontrolatzaileek kudeatzen dituzte.
+
+### 2.1. Webgunearen Egitura:
+
+Webgunea PHPn garatuta dago, eta MySQL datu-base bat erabiltzen du erabiltzaileen eta kurtsoen informazioa gordetzeko. Webgunearen egitura orrialde nagusi eta osagarrien bidez antolatuta dago:
+
+- saioa_hasi.php: Erabiltzaileek saioa hasteko formularioa. Erabiltzailea eta pasahitza sartzen ditu, eta autentifikazioa burutzen du.
+- erregistratu.php: Erabiltzaile berriak erregistratzeko orrialdea. Beharrezko informazioa (erabiltzaile izena, pasahitza, eta abar) biltzen du.
+- index_ikasleak.php: Saioa hasitako erabiltzaileek (ikasleek) ikus ditzaketen kurtsoen zerrenda erakusten duen orrialdea. Erabiltzaileek kurtsoetan matrikulatu daitezke orrialde honen bidez.
+- matrikulazioa.php: Kurtso batean matrikulazio-eskaerak prozesatzen dituen orrialdea. Ikaslearen IDa eta kurtsoaren IDa jasotzen ditu, eta dagokion datu-base erregistroa eguneratzen du.
+
+### 2.2. Teknologiak:
+
+- Backend: PHP erabiltzen da zerbitzarian exekutatzeko, eta datu-basearekiko konexioak eta logika orokorra kudeatzeko.
+- Datu-basea: MySQL datu-basea erabiltzen da erabiltzaile, kurtso eta matrikulen informazioa gordetzeko.
+- Frontend: HTML eta CSS erabiltzen dira orrialdeak eraikitzeko eta estiloak aplikatzeko.
+- Formularioen kudeaketa: Formularioak erabiltzaileek datuak sartu eta bidaltzeko mekanismo nagusia dira. PHPn egindako prozesamenduarekin integratzen dira.
+
+### 2.3. Segurtasun Neurriak:
+
+- Saio-kudeaketa (Session Management): session_start() funtzioa erabiltzen da erabiltzaileek saio aktiboa dutela egiaztatzeko. Erabiltzaile bakoitza saioa hasi duen edo ez egiaztatzen da, eta baimenak egiaztatzen dira, administratzailea den edo ikaslea den jakiteko.
+- Pasahitzak Hasheatzea: Erabiltzaileek erregistratzen dituzten pasahitzak password_hash() funtzioarekin zifratu behar dira, eta saioa hasteko erabiltzen denean, password_verify() erabiltzen da. Honek datu-basean gordetako pasahitzak seguru mantentzen ditu.
+- SQL Injizioaren Aurkako Babesa: SQL injekzioak saihesteko, prepare() eta bind_param() funtzioak erabiltzen dira SQL kontsultetan. Horrela, erabiltzaileek sartzen duten datuak zuzenean kontsultetan txertatzea saihesten da.
+- Datu-sarreren balidazioa: Erabiltzaileen sarrera guztia balidatu egiten da, bai zerbitzarian (PHP) zein bezeroan (HTML) erroreak eta erasoak saihesteko.
+- Baimen-kontrola: Erabiltzaileak baimen bereziak dituzten orrialdeetara sartzen saiatzen direnean, saioaren informazioa egiaztatzen da. Adibidez, administratzailea ez bada, erabiltzailea ezin da sartzeko baimena duen orrialde batera joan, eta saioa_hasi.php orrira bideratzen da.
+
+### 2.4. Informazio Gehigarria:
+
+- Erabiltzaile motak: Bi erabiltzaile mota daude: administratzaileak eta ikasleak. Administratzaileek kontrol handiagoa dute (adibidez, kurtsoak sortzea eta ikasleen kudeaketa), eta ikasleek matrikulatu eta ikusi ditzaketen kurtsoak dituzte eskuragarri.
+- Responsive diseinua: Webgunea diseinu erantzunkorra du, hainbat gailutan ondo ikusteko moduan. HTML eta CSS estiloak erabiltzen dira pantailaren tamainara egokitzeko.
+- Errore-mezuak eta bideratzea: Erroreak gertatzen direnean (adibidez, datu-basearekin konektatzerakoan), erabiltzailea zuzenean orrialde jakin batera bideratzen da (header() funtzioarekin), eta informazio garrantzitsua ez da agertzen, segurtasun arazoak saihesteko.
+
+## 3. Exekuzioa eta egitura
+
+Lehen web orriaren egituraz jardun dugu era labur batean hala ere kontutan eduki behar da nola dagoen egituratua web orria. Kodea garbiago eta ulergarriagoa izateko helburuarekin web orria osatzen duten fitxategiak direktorio eta azpi-direktorioetan banatu ditugu. Egitura hau neurri handi batean Apache-k alojamendua egiteko moduarekin talka egin du beraz zentzu honetan moldaketa batzuk egin behar izan dugu.
+
+Hau izango litzaeke egituraren eskema txiki bat:
+
+
