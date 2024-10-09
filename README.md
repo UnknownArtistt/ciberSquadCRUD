@@ -62,4 +62,63 @@ Lehen web orriaren egituraz jardun dugu era labur batean hala ere kontutan eduki
 
 Hau izango litzaeke egituraren eskema txiki bat:
 
+<img src="egitura.png">
+
+Apache-ko direktorio nagusian (/var/www/html) gure web orriaren proiektua jarri dugu. Proeiktuaren erroa beraz /var/www/html/ciberSquadCRUD izango litzateke. Bertan lehen aipatutako php dokumentuak ditugu:
+
+- index.php eta index_ikasleak.php
+- administrazioa.php -> Administrazio panelaren orri nagusia, bertatik panel ezberdinetara joan daiteke nabigazio menutik.
+- konexioa.php -> Gure zerbitzarian dagoen datu basera konekzioa egiten du, fitxategi honek mysqli instantziako obejktu bat sortzen du beharrezko datuak pasatuz eta konexio objektua itzultzen du query-ak exekutatzeko. Datu basera operazio bat - prozesatzen duen fitxategietatik deitzen da operazioa atzitzeko datu basean.
+- saioa_hasi.php -> Erabiltzailea logeatzen du eta zein motatako erabiltzaile den zehazten da beharrezko index-era berbidaltzeko.
+- erregistratu.php -> Erregistro eskaera bat egiten du bere datuak pasatuz.
+- matrikulazioa.php -> Behin ikasleen index-etik ikasleak nahi duen kurtsoan matrikulatzen dio.
+
+Honako dokumentuak nolabait oinarrizko funtzionalitate garrantzitsuenak izango lirateke. Hortik aurrera beste azpi direktorioekin egongo lirateke lotuta. Garapen fasean filosofia zehatz bat eraman dugu, non funtzionalitate bakoitzak bere prozesamendu fitxategia duen model azpi direktorioaren barnean.
+
+Model azpi direktorioa honako beste azpi direktorioetan banatuko litzateke, azpi direktorio hauek administrazio panelaren oinarrizko panelak edukiko lituzke prozesamendu fitxategietaz gain:
+
+erb -> Erabiltzaileen panelaren erroa
+ere -> Errefistro eskaeren erroa
+iks -> Ikasleen panelaren erroa
+krs -> Kurtsoen panelaren erroa
+obj -> Model-ak, hau da objektu klaseak (ikaslea, erabiltzailea eta kurtsoa)
+
+Gainera model-en prozesamendu fitxategiak egongo lirateke:
+
+- erregistratu_prozesatu.php
+- login_prozesatu.php
+- logout.php
+
+Arruntena erabiltzailea logeatu eta hortik abiatzea izango litzateke. Aurretik esandako moduan guk administraria eta ikaslea-ren artean bereizten dugu. Administrariak erabateko kontrola du, beraz login-ean bereizketa hori egiten dugu login_prozesatu.php fitxategiarekin. 
+
+Hortik aurrera bi bide daude: 
+
+1. Administraria bada model-eko azpi direktorioetara joango litzateke exekuzioa. Lehenik administrazioa.php kargatuko litzateke eta bertatik paneletara sartuko da. Panel horiek erb, ere, iks eta krs azpi direktorioetan daude alojatuta. Azpi direktorio bakoitzean funtzionalitate eta prozesamendu fitxategiak daude, gainera css fitxategiak ere daude horiei diseinua emateko. Hala ere lehenik panelaren orria azalduko litzateke, bertan datuak gordinik bistaratzen dira taula eran eta bertatik administrariak egin nahi duen operazioaren arabera funtzionalitate bat edo bestea prozesatzen da:
+
+Adibidez kurtsoen azpi direktorioa honelakoa izango litzateke, panel honek CRUD-aren funtzionalitate guztiak ditu beraz errez ikusi daiteke (beste paneletan egitura berdina jarraitzen da, hala ere gertatu daiteke CRUD-aren funtzionalitate guztiak ez izatea) zelako egitura jarraitze duten panelak:
+
+- kurtsoak.php -> Panelaren orri nagusia, erregistroak tauletan bistaratzen dira eta hiru botoi errazten dira; ezabatu, eguneratu eta kurtso berria sortu.
+- create_kurtsoa.php -> kurtsoak.php-eko kurtso beria sortu botoia sakatzean prozesatuko den fitxategia, honek insert bat egingo du datu basera formularioan sartutako datuekin.
+- update_kurtsoa.php -> kurtsoak.php-en eguneratu botoia sakatzean formulario batera eramango du (fitxategi hau izanik), bertan formularioan datuak sartuko dira eta prozesamendu fitxategira bidaliko du eguneraketa egiteko.
+- update_kurtsoa_prozesatu.php -> Eguneratze formularioan bidalitako datuak prozesatuko dira eta datu basera Update sententzia bat exekutatuko da.
+- delete_kurtsoa.php -> kurtsoak.php-n ezabatu botoia ematean kurtsoaren identifikatzailea hartuta Delete sententzia bat exekutatzen du kurtsoa ezabatuz.
+- krs_fun.php -> Kurtsoen panelerako funtzioak aurkitzen dira fitxategi honetan, zuzenean hemendik egiten da konekzioa datu basera. Hiru funtzio daude CRUD-eko funtzionalitate bakoitzarentzat.
+
+2. Erabiltzailea Ikaslea bada index_ikasleak.php-ra bidaliko zaio, bertan kurtso guztiak zerrendatuko dira, erregistro bakoitzaren ezkerraldean matrikulatzeko botoi bat ezarri da. Ikaslea nahi duen kurtsoan klikatuko du eta matrikulatu egingo da. 
+
+Ikasleak taulan kurtso_id izeneko eremu bat dago, bertan matrikulatu den kurtsoaren identifikatzailea ezarriko da. Behin matrikulatuta badago ezingo du beste matrikularik egin, matrikulatzeko botoiak desgaituko dira. Honetarako select bat egiten da, logeatu den ikasleak kurtso_id eremuan ez badu erregistrorik botoiak gaitzen dira bestela desgaitu egingo dira.
+
+## Erabiltzaileen bereizketa eta altak
+
+Erabiltzaileen arteko bereizketa login_prozesatu.php fitxategian eramaten da aurrera eta nolabait altekin du zerikusia ere. Prozesamendu fitxategi horretan lehenik sartu den erabiltzailearen izena eta pasahitza egiaztatzen dira. Pasahitza bCrypt-ekin hasheatuta gordetzen da beraz erabiltzaileak sartutako pasahitza hasheatu eta datu basean sartutakoarekin konparatzen da. 
+
+Kredentzialak zuzenak badira hurrengo pausoa administraria den egiaztatzea izango zen. Erabiltzaile taulan administraria izeneko eremu bat dago, hau int motatakoa da (karakter bakarrekoa, 0 edo 1 gordetzen da) administraria bada 0 izan beharko luke eremu horretan, beraz datu hori jaso eta 0 bada administrazioa.php-ra bidaltzen zaio eta 1 bada index_ikasleak.php-ra joango da.
+
+Altak egiteko erregistro eskaeren bitartez egiten da, erregistroan eskaera egiten da eta administrariak paneletik datuak jasoko ditu. Bertatik alta eman botoiari emanez eskaera egin duen pertsonari ikasleetan eta erabiltzaileetan emango dio altan.
+
+Lehenik ikasleetan ematen du alta, hau derrigorrezkoa da erabiltzaile taulan ikasle_id-a sartzen delako. Ikasle batek bere erabiltzaile du eta biak erlazionatuta daude. Behin ikasleetan alta emanez automatikoki id bat ezartzen zaio eta id horrekin eta gainerako datuekin erabiltzaile bat sortzen zaio. Beti ikasle erabiltzaile bat izango da, insert-a egitean administraria eremuan 1 jarriko zaio.  
+
+
+
+
 
