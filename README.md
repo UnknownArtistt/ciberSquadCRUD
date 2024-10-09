@@ -10,4 +10,4 @@ Azkenik, beste taula bat dugu, eskatutako erregistroen eskaerak gordetzeko. Taul
 
 Honak hau izango litzateke datu basearen diagrama. Bertan eremuen izenak eta taulen arteko erlazioak ikusi ahal dira:
 
-<img src="datuBaseDiagrama.png" width=40%>
+<img src="datuBaseDiagrama.png">
